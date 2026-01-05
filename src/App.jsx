@@ -1,9 +1,7 @@
+import AppRouter from "./AppRoutes";
+
 function App() {
-  return (
-    <>
-      <h1 className="flex flex-col text-2xl font-bold text-red-500">Hello</h1>
-    </>
-  );
+  return <AppRouter />;
 }
 
 export default App;
