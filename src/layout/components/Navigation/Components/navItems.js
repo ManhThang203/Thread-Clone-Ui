@@ -1,9 +1,10 @@
-import { Search, Heart, Plus, Menu } from "lucide-react";
+// Icons
+import { User } from "@/components/icons/User";
 import { House } from "@/components/icons/House";
+import { Search, Heart, Plus } from "lucide-react";
+import { UserActiveIcon } from "@/components/icons/UserActiveIcon";
 import { HouseActiveIcon } from "@/components/icons/HouseActiveIcon";
 import { HeartActiveIcon } from "@/components/icons/HeartActiveIcon";
-import { User } from "@/components/icons/User";
-import { UserActiveIcon } from "@/components/icons/UserActiveIcon";
 
 export const navItems = [
   {
@@ -29,7 +30,7 @@ export const navItems = [
     label: "Hoạt động",
   },
   {
-    path: "/profile",
+    path: "/user",
     icon: User,
     activeIcon: UserActiveIcon,
     label: "Hồ sơ",

@@ -1,3 +1,4 @@
+// Components
 import {
   MobileNav,
   DesktopSidebar,
@@ -6,8 +7,8 @@ import {
 function Navigation() {
   return (
     <>
-      <MobileNav />
       <DesktopSidebar />
+      <MobileNav />
     </>
   );
 }
