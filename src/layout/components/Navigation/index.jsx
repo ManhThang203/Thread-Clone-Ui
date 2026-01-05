@@ -41,8 +41,8 @@ function Navigation() {
   ];
 
   return (
-    <NavigationMenu className="fixed right-0 bottom-0 left-0 h-12.5 max-w-full bg-white/90 backdrop-blur-xs">
-      <NavigationMenuList className="flex w-dvw">
+    <NavigationMenu className="fixed bottom-0 h-12.5 max-w-full bg-white/90 backdrop-blur-xs md:left-0 md:w-12 md:rotate-90">
+      <NavigationMenuList className="flex w-dvw md:h-12.5 md:w-dvh">
         {navItems.map((item, index) => {
           return item.path ? (
             <NavigationMenuItem key={item.path} className="flex-1">
