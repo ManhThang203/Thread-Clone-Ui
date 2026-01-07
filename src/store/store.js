@@ -6,7 +6,7 @@ import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: storage.default,
 };
 
 const rootReducer = combineReducers({
@@ -15,6 +15,11 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
   reducer: persistReducer(persistConfig, rootReducer),
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+  ],
 });
 
 const persistor = persistStore(store);

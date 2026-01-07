@@ -19,6 +19,7 @@ export const authSlide = createSlice({
       state.fetching = true;
     });
     builder.addCase(getCurrentUser.fulfilled, (state, actions) => {
+      console.log(actions, state);
       state.currentUser = actions.payload;
       state.fetching = false;
     });
