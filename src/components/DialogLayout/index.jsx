@@ -34,12 +34,12 @@ function DialogLayout({
       case "left":
         return `${baseClass} top-10 left-10`;
       default:
-        return `${baseClass} top-0 -left-16`;
+        return `${baseClass} top-10 -left-16`;
     }
   };
 
   const defaultMotionProps = {
-    initial: { opacity: 0, scale: 0.9 },
+    initial: { opacity: 0, scale: 1 },
     animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0, scale: 0.9 },
     transition: { duration: 0.2 },

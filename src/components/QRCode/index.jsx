@@ -26,7 +26,6 @@ const QRCode = () => {
         open={isOpen}
         onOpenChange={setIsOpen}
         showCloseButton={true}
-        closeButtonPosition="left"
         closeOnOverlayClick={true}
       >
         <div className="bg-background rounded-2xl p-6 shadow-2xl">
