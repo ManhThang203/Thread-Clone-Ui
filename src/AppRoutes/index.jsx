@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { lazy } from "react";
 import DefaultLayout from "@/layout/DefaultLayout";
 
+import AuthProvider from "@/components/AuthProvider";
+
 const Activity = lazy(() => import("@/page/Activity"));
 const Search = lazy(() => import("@/page/Search"));
 const User = lazy(() => import("@/page/User"));
@@ -18,6 +20,7 @@ const Home = lazy(() => import("@/page/Home"));
 function AppRouter() {
   return (
     <BrowserRouter>
+      <AuthProvider />
       <Routes>
         {/* Default Layout */}
         <Route element={<DefaultLayout />}>
