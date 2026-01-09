@@ -1,13 +1,14 @@
+import { LOCAL_STORAGE_KEYS } from "@/configs";
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_BASE_API;
+const baseURL = import.meta.env.VITE_API_BASE_URL;
 
 export const httpClient = axios.create({
   baseURL,
 });
 
 httpClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem("accessToken");
+  const token = localStorage.getItem(`${LOCAL_STORAGE_KEYS.ACCESS_TOKEN}`);
   if (token) {
     config.headers.set("Authorization", `Bearer ${token}`);
   }
@@ -52,8 +53,14 @@ const refreshToken = async () => {
     });
     if (result.status === "success") {
       // Lưu cặp token mới vào localStorage
-      localStorage.setItem("accessToken", result.data.data.access_token);
-      localStorage.setItem("refreshToken", result.data.data.refresh_token);
+      localStorage.setItem(
+        `${LOCAL_STORAGE_KEYS.ACCESS_TOKEN}`,
+        result.data.data.access_token,
+      );
+      localStorage.setItem(
+        `${LOCAL_STORAGE_KEYS.REFRESH_TOKEN}`,
+        result.data.data.refresh_token,
+      );
     }
 
     // Thông báo thành công cho tất cả request đang chờ
@@ -110,7 +117,6 @@ httpClient.interceptors.response.use(
 
       try {
         // Lấy token mới
-        console.log("getNewToken");
         await getNewToken();
 
         // Thử lại request ban đầu với token mới
