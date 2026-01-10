@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_KEYS } from "@/configs";
+import { HTTP_STATUS, LOCAL_STORAGE_KEYS } from "@/configs";
 import axios from "axios";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -8,7 +8,7 @@ export const httpClient = axios.create({
 });
 
 httpClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem(`${LOCAL_STORAGE_KEYS.ACCESS_TOKEN}`);
+  const token = localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN);
   if (token) {
     config.headers.set("Authorization", `Bearer ${token}`);
   }
@@ -48,18 +48,18 @@ const processQueue = (error) => {
 const refreshToken = async () => {
   try {
     // Gọi API làm mới token bằng refreshToken hiện có
-    const result = await axios.post(`${baseURL}/auth/refresh-token`, {
-      refresh_token: localStorage.getItem("refreshToken"),
+    const result = await axios.post(`${baseURL}/auth/refresh`, {
+      refresh_token: localStorage.getItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN),
     });
-    if (result.status === "success") {
+    if (result.status === HTTP_STATUS.OK) {
       // Lưu cặp token mới vào localStorage
       localStorage.setItem(
-        `${LOCAL_STORAGE_KEYS.ACCESS_TOKEN}`,
-        result.data.data.access_token,
+        LOCAL_STORAGE_KEYS.ACCESS_TOKEN,
+        result.data.access_token,
       );
       localStorage.setItem(
-        `${LOCAL_STORAGE_KEYS.REFRESH_TOKEN}`,
-        result.data.data.refresh_token,
+        LOCAL_STORAGE_KEYS.REFRESH_TOKEN,
+        result.data.refresh_token,
       );
     }
 

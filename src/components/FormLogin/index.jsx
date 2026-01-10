@@ -13,6 +13,9 @@ import { ChevronRight, Eye, EyeOff } from "lucide-react";
 import { Link } from "react-router-dom";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 
+import PropTypes from "prop-types";
+import { Spinner } from "@/components/ui/spinner";
+
 function FormLogin({
   handleSubmit,
   onSubmit,
@@ -21,6 +24,9 @@ function FormLogin({
   isFormValid,
   showPassword,
   setShowPassword,
+  loginInputRef,
+  passwordInputRef,
+  isSubmitting,
 }) {
   return (
     <motion.div
@@ -37,15 +43,16 @@ function FormLogin({
         {/* Email / Username */}
         <div>
           <Input
+            ref={loginInputRef}
             type="text"
             placeholder="Tên người dùng, số điện thoại hoặc email"
-            {...register("email", {
+            {...register("login", {
               required: "Vui lòng nhập trường này",
             })}
             className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
           />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+          {errors.login && (
+            <p className="mt-1 text-sm text-red-600">{errors.login?.message}</p>
           )}
         </div>
 
@@ -54,6 +61,7 @@ function FormLogin({
           <div className="relative">
             {/* SỬA TỪ <Inpu> THÀNH <Input> */}
             <Input
+              ref={passwordInputRef}
               type={showPassword ? "text" : "password"}
               placeholder="Mật khẩu"
               {...register("password", {
@@ -80,12 +88,16 @@ function FormLogin({
 
         {/* Submit Button */}
         <Button
+          disabled={isSubmitting} // chỉ disable thật khi đang gọi API
           type="submit"
-          disabled={!isFormValid}
           variant={isFormValid ? "default" : "secondary"}
-          className="h-14 w-full rounded-2xl text-base font-medium transition-all duration-300"
+          className={`h-14 w-full rounded-2xl text-base font-medium transition-all duration-300 ${
+            isFormValid && !isSubmitting
+              ? "bg-primary hover:bg-primary text-primary-foreground cursor-pointer"
+              : "bg-primary hover:bg-primary cursor-not-allowed text-black/40"
+          } `}
         >
-          Đăng nhập
+          {isSubmitting ? <Spinner className="size-8" /> : "Đăng nhập"}
         </Button>
       </form>
 
@@ -125,5 +137,18 @@ function FormLogin({
     </motion.div>
   );
 }
+
+FormLogin.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  setShowPassword: PropTypes.func.isRequired,
+  isFormValid: PropTypes.bool.isRequired,
+  showPassword: PropTypes.bool.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  loginInputRef: PropTypes.object.isRequired,
+  passwordInputRef: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+};
 
 export default FormLogin;
