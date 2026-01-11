@@ -35,12 +35,10 @@ const LoginForm = () => {
     setFocus,
   } = useForm({
     defaultValues: {
-      login: "",
-      password: "",
+      login: "thang221",
+      password: "Thang2121",
     },
   });
-
-  console.log(isSubmitting);
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const login = watch("login");
@@ -64,7 +62,6 @@ const LoginForm = () => {
   }, [currentUser, navigate, params]);
 
   const onSubmit = async (data) => {
-    // Kiểm tra input trống (Giữ nguyên logic của bạn)
     if (!data.login?.trim()) {
       setFocus("login");
       toast.error("Vui lòng nhập tên người dùng, email hoặc số điện thoại");
@@ -75,23 +72,22 @@ const LoginForm = () => {
       toast.error("Vui lòng nhập mật khẩu");
       return;
     }
+    console.log(data);
 
     try {
-      // Quan trọng: Phải await toast.promise
       const response = await toast.promise(authServices.login(data), {
         loading: "Đang đăng nhập...",
         success: () => {
-          // 'res' chính là dữ liệu trả về từ authServices.login(data)
           return "Đăng nhập thành công! Chào mừng bạn quay lại.";
         },
         error: (err) => {
-          // Lấy message từ server trả về (ví dụ: err.response.data.message)
           const msg =
             err?.response?.data?.message ||
             "Tài khoản hoặc mật khẩu không đúng";
           return `Đăng nhập thất bại: ${msg}`;
         },
       });
+      console.log(response.data);
 
       // Nếu code chạy xuống được đây, nghĩa là login THÀNH CÔNG
       const { access_token, refresh_token } = response;

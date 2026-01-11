@@ -12,11 +12,13 @@ export const getCurrentUser = createAsyncThunk(
 
 export const register = async (data) => {
   const response = await http.post("/auth/register", data);
+
   return response.data;
 };
 
 export const login = async (data) => {
   const response = await http.post("/auth/login", data);
+  console.log(response.data.access_token, response.data.refresh_token);
   return response.data;
 };
 
