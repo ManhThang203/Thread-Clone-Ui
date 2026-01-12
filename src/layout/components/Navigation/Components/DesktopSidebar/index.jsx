@@ -4,13 +4,18 @@ import { NavLink } from "react-router-dom";
 // Components
 import { Button } from "@/components/ui/button";
 import { ThreadsLogo } from "@/components/icons/ThreadsLogo";
+import GuestMenu from "@/components/GuestMenu";
 
-import { navItems } from "../navItems";
+import { navItems } from "@/layout/components/Navigation/Components/navItems";
 
 // Icons
 import { Menu } from "lucide-react";
+import UserMenu from "@/components/UserMenu";
+import { useCurrentUser } from "@/features/auth";
 
 function DesktopSidebar() {
+  const currentUser = useCurrentUser();
+  const MenuComponent = currentUser ? UserMenu : GuestMenu;
   return (
     <aside className="fixed top-0 left-0 hidden h-dvh w-[76px] flex-col items-center p-2 md:flex">
       {/* Logo */}
@@ -48,12 +53,14 @@ function DesktopSidebar() {
       </nav>
 
       {/* More Button */}
-      <Button
-        variant="ghost"
-        className="p-3 hover:cursor-pointer hover:bg-transparent"
-      >
-        <Menu className="size-7 text-gray-400" />
-      </Button>
+      <MenuComponent>
+        <Button
+          variant="ghost"
+          className="p-3 hover:cursor-pointer hover:bg-transparent"
+        >
+          <Menu className="size-7 text-gray-400" />
+        </Button>
+      </MenuComponent>
     </aside>
   );
 }
