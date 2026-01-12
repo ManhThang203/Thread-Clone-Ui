@@ -71,6 +71,8 @@ const refreshToken = async () => {
     // Nếu làm mới token thất bại, thông báo lỗi cho tất cả
     processQueue(error);
     throw error; // Ném lỗi để hàm gọi biết việc làm mới thất bại
+  } finally {
+    isRefreshing = false; // Kết thúc quá trình làm mới
   }
 };
 
@@ -78,15 +80,18 @@ const refreshToken = async () => {
 // Đảm bảo chỉ có 1 request làm mới token tại một thời điểm
 const getNewToken = async () => {
   // Nếu chưa có ai đang làm mới token
+  console.log(isRefreshing);
+
   if (!isRefreshing) {
     isRefreshing = true; // Đánh dấu là đang làm mới
     await refreshToken(); // Thực hiện làm mới token
-    isRefreshing = false; // Đánh dấu hoàn thành
+
     return;
   }
 
   // Nếu đã có request khác đang làm mới token
   // Thì request này sẽ xếp hàng chờ đợi
+
   return new Promise((resolve, reject) => {
     // Thêm vào hàng đợi, sẽ được xử lý khi token mới sẵn sàng
     failedQueue.push({ resolve, reject });
@@ -110,6 +115,7 @@ httpClient.interceptors.response.use(
     // Kiểm tra xem có nên làm mới token không:
     // - Lỗi 401 (Unauthorized - token hết hạn)
     // - Request này chưa từng được thử lại (_retry chưa set)
+
     const shouldRenewToken =
       error.response.status === 401 && !originalRequest._retry;
 
@@ -140,7 +146,6 @@ httpClient.interceptors.response.use(
 );
 
 const _send = async (method, path, data, config) => {
-  console.log(123);
   try {
     const response = await httpClient.request({
       ...config,
@@ -148,7 +153,7 @@ const _send = async (method, path, data, config) => {
       url: path,
       data,
     });
-    console.log(response);
+
     return response.data;
   } catch (error) {
     console.log(error);

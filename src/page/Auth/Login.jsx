@@ -35,8 +35,8 @@ const LoginForm = () => {
     setFocus,
   } = useForm({
     defaultValues: {
-      // login: "thang221",
-      // password: "Thang2121",
+      login: "thang221-test",
+      password: "Thang2121",
     },
   });
 
@@ -60,29 +60,31 @@ const LoginForm = () => {
       navigate(continuePath);
     }
   }, [currentUser, navigate, params]);
+
+  //  Hàm xử lý lỗi validation từ React Hook Form
+  //  Hiển thị thông báo lỗi đầu tiên bằng toast notification
   const onError = (errors) => {
+    // Lấy key của field lỗi đầu tiên trong object errors
     const firstError = Object.keys(errors)[0];
+    console.log(errors[firstError]);
+
+    // Hiển thị message của lỗi đầu tiên qua toast notification
     toast.error(errors[firstError].message);
   };
+
   const onSubmit = async (data) => {
     const loginPromise = authServices.login(data);
-    try {
-      await authServices.login(data);
-    } catch (error) {
-      console.log(error);
-    }
     toast.promise(loginPromise, {
       pending: () => "Đang đăng nhập...",
       success: () => {
         return "Đăng nhập thành công! Chào mừng bạn quay lại.";
       },
       error: () => {
-        return `Đăng nhập thất bại`;
+        return "Vui lòng kiểm tra lại useName, email hay mật khẩu";
       },
     });
     try {
       const response = await loginPromise;
-      console.log(response.data);
 
       // Nếu code chạy xuống được đây, nghĩa là login THÀNH CÔNG
       const { access_token, refresh_token } = response;
@@ -91,7 +93,7 @@ const LoginForm = () => {
 
       dispatch(authServices.getCurrentUser());
     } catch (error) {
-      console.error("Login flow error:", error);
+      console.log("Login flow error:", error);
     }
   };
 

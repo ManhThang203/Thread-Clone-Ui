@@ -22,10 +22,12 @@ export const register = async (data) => {
 export const login = async (data) => {
   try {
     const response = await http.post("/auth/login", data);
-    console.log(response);
     return response.data;
   } catch (error) {
-    console.log(error);
+    // Lấy thông tin lỗi chi tiết từ response
+    const errorMessage =
+      error.response?.data?.message || error.message || "Lỗi đăng nhập";
+    throw new Error(errorMessage);
   }
 };
 
