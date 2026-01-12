@@ -19,6 +19,7 @@ import { Spinner } from "@/components/ui/spinner";
 function FormLogin({
   handleSubmit,
   onSubmit,
+  onError,
   register,
   errors,
   isFormValid,
@@ -39,7 +40,7 @@ function FormLogin({
         Đăng nhập bằng tài khoản Instagram
       </h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+      <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-3">
         {/* Email / Username */}
         <div>
           <Input
@@ -47,7 +48,7 @@ function FormLogin({
             type="text"
             placeholder="Tên người dùng, số điện thoại hoặc email"
             {...register("login", {
-              required: "Vui lòng nhập trường này",
+              required: "Vui lòng nhập tên đăng nhập hoặc email",
             })}
             className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
           />
@@ -65,7 +66,7 @@ function FormLogin({
               type={showPassword ? "text" : "password"}
               placeholder="Mật khẩu"
               {...register("password", {
-                required: "Vui lòng nhập trường này",
+                required: "Vui lòng nhập mật khẩu",
               })}
               className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl pr-12"
             />

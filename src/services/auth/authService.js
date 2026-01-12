@@ -5,21 +5,28 @@ export const getCurrentUser = createAsyncThunk(
   "User/getCurrentUser",
   async () => {
     const response = await http.get("/auth/user");
-    console.log(response);
     return response.data;
   },
 );
 
 export const register = async (data) => {
-  const response = await http.post("/auth/register", data);
+  try {
+    const response = await http.post("/auth/register", data);
 
-  return response.data;
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const login = async (data) => {
-  const response = await http.post("/auth/login", data);
-  console.log(response.data.access_token, response.data.refresh_token);
-  return response.data;
+  try {
+    const response = await http.post("/auth/login", data);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const logout = async () => {

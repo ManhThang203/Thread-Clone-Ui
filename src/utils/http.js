@@ -51,6 +51,7 @@ const refreshToken = async () => {
     const result = await axios.post(`${baseURL}/auth/refresh`, {
       refresh_token: localStorage.getItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN),
     });
+    console.log(result);
     if (result.status === HTTP_STATUS.OK) {
       // Lưu cặp token mới vào localStorage
       localStorage.setItem(
@@ -66,6 +67,7 @@ const refreshToken = async () => {
     // Thông báo thành công cho tất cả request đang chờ
     processQueue(null);
   } catch (error) {
+    console.log(error);
     // Nếu làm mới token thất bại, thông báo lỗi cho tất cả
     processQueue(error);
     throw error; // Ném lỗi để hàm gọi biết việc làm mới thất bại
@@ -138,13 +140,19 @@ httpClient.interceptors.response.use(
 );
 
 const _send = async (method, path, data, config) => {
-  const response = await httpClient.request({
-    ...config,
-    method,
-    url: path,
-    data,
-  });
-  return response.data;
+  console.log(123);
+  try {
+    const response = await httpClient.request({
+      ...config,
+      method,
+      url: path,
+      data,
+    });
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const get = async (path, config) => {
