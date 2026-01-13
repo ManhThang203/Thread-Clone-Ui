@@ -1,3 +1,6 @@
+// React
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 // Components
 import {
   DropdownMenu,
@@ -7,9 +10,27 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+// Auth
+import * as authServices from "@/services/auth/authService";
+import { setCurrentUser } from "@/features/auth";
+
 // Icon
 import { ChevronRight } from "lucide-react";
+
 function UserMenu({ children }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogout = async () => {
+    try {
+      await authServices.logout();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      localStorage.clear();
+      navigate("/login");
+      dispatch(setCurrentUser(null));
+    }
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
@@ -55,7 +76,10 @@ function UserMenu({ children }) {
             Báo cáo hỗ trợ
           </span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="flex cursor-pointer items-center justify-between rounded-lg p-3.5 hover:bg-gray-50">
+        <DropdownMenuItem
+          onClick={handleLogout}
+          className="flex cursor-pointer items-center justify-between rounded-lg p-3.5 hover:bg-gray-50"
+        >
           <span className="text-[15px] font-medium text-red-600">
             Đăng xuất
           </span>
