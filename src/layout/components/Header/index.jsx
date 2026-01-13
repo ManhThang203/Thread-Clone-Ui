@@ -10,7 +10,7 @@ import { Menu } from "lucide-react";
 
 function Header() {
   return (
-    <div className="fixed inset-0 block flex h-15 items-center justify-between bg-white/90 px-5 backdrop-blur-xs md:hidden">
+    <div className="bg-background/90 fixed inset-0 block flex h-15 items-center justify-between px-5 backdrop-blur-xs md:hidden">
       <Button className="bg-transparent !px-0 text-gray-400 hover:cursor-pointer hover:bg-transparent">
         <Menu size={30} />
       </Button>

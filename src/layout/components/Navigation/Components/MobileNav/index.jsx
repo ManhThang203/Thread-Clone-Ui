@@ -14,7 +14,7 @@ import { navItems } from "../navItems";
 
 function MobileNav() {
   return (
-    <NavigationMenu className="fixed right-0 bottom-0 left-0 h-12.5 max-w-full bg-white/90 backdrop-blur-xs sm:block md:hidden">
+    <NavigationMenu className="bg-background/90 fixed right-0 bottom-0 left-0 h-12.5 max-w-full backdrop-blur-xs sm:block md:hidden">
       <NavigationMenuList className="flex w-dvw">
         {navItems.map((item, index) => {
           return item.path ? (
@@ -33,7 +33,7 @@ function MobileNav() {
                     return (
                       <Icon
                         className={`size-6 ${
-                          isActive ? "text-black" : "text-gray-400"
+                          isActive ? "text-accent-foreground" : " text-ring"
                         }`}
                       />
                     );

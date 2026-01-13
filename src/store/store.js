@@ -3,6 +3,7 @@ import { authSlide } from "@/features/auth";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { themeSlice } from "@/features/theme/themeSlice";
 
 const persistConfig = {
   key: "root",
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   [authSlide.reducerPath]: authSlide.reducer,
+  [themeSlice.reducerPath]: themeSlice.reducer,
 });
 
 const store = configureStore({
