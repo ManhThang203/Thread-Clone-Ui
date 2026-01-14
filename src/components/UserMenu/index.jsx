@@ -8,9 +8,6 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu";
 
 // Hooks & Actions
@@ -19,26 +16,37 @@ import { setTheme } from "@/features/theme/themeSlice";
 import { useLogout } from "@/hooks/useLogout";
 
 // Icons
-import { ChevronRight, Sun, Moon, Laptop } from "lucide-react";
+import { ChevronRight, Sun, Moon, Laptop, MoveLeft } from "lucide-react";
 
 import { useTheme } from "@/hooks/useTheme";
 import { useState } from "react";
 
 function UserMenu({ children }) {
-  useTheme();
+  const theme = useTheme();
   const dispatch = useDispatch();
   const { handleLogout } = useLogout();
 
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const [openThemeMenu, setOpenThemeMenu] = useState(false);
+  const [openLanguageMenu, setOpenLanguageMenu] = useState(false);
 
   const handleOpenTheme = () => {
     setOpenUserMenu(false);
     setOpenThemeMenu(true);
   };
 
+  const handleOpenLanguage = () => {
+    setOpenUserMenu(false);
+    setOpenLanguageMenu(true);
+  };
+
   const handleSelectTheme = (newTheme) => {
     dispatch(setTheme(newTheme));
+    setOpenThemeMenu(false);
+  };
+
+  const hanldeOpenUserMenu = () => {
+    setOpenUserMenu(true);
     setOpenThemeMenu(false);
   };
 
@@ -56,6 +64,7 @@ function UserMenu({ children }) {
             className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none"
           >
             <span className="text-[15px] font-medium">Giao diện</span>
+            <ChevronRight className="text-muted-foreground h-5 w-5" />
           </DropdownMenuItem>
 
           <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer rounded-lg p-3.5 outline-none">
@@ -84,6 +93,14 @@ function UserMenu({ children }) {
 
           <DropdownMenuSeparator className="bg-border my-1" />
 
+          <DropdownMenuItem
+            onClick={handleOpenLanguage}
+            className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none"
+          >
+            <span className="text-[15px] font-medium">Ngôn ngữ</span>
+            <ChevronRight className="text-muted-foreground h-5 w-5" />
+          </DropdownMenuItem>
+
           <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none">
             <span className="text-[15px] font-medium">Báo cáo hỗ trợ</span>
           </DropdownMenuItem>
@@ -107,8 +124,21 @@ function UserMenu({ children }) {
           align="end"
           className="bg-popover border-border relative -right-6 bottom-10 w-56 origin-bottom-left rounded-xl p-2"
         >
+          <div className="relative mb-6 flex h-8 items-center justify-center">
+            <button
+              onClick={hanldeOpenUserMenu}
+              type="button"
+              className="absolute top-0 bottom-0 left-0 flex w-10 cursor-pointer items-center justify-center transition-colors duration-200"
+            >
+              <MoveLeft className="h-5 w-5" />
+            </button>
+
+            <span className="text-foreground/90 text-md flex-1 text-center font-medium">
+              Giao diện
+            </span>
+          </div>
           <DropdownMenuItem
-            className="text-[15px] font-medium hover:cursor-pointer"
+            className={`text-[15px] font-medium hover:cursor-pointer ${theme === "light" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
             onClick={() => handleSelectTheme("light")}
           >
             <Sun className="mr-2 h-4 w-4" />
@@ -116,7 +146,7 @@ function UserMenu({ children }) {
           </DropdownMenuItem>
 
           <DropdownMenuItem
-            className="text-[15px] font-medium hover:cursor-pointer"
+            className={`my-2 text-[15px] font-medium hover:cursor-pointer ${theme === "dark" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
             onClick={() => handleSelectTheme("dark")}
           >
             <Moon className="mr-2 h-4 w-4" />
@@ -124,11 +154,45 @@ function UserMenu({ children }) {
           </DropdownMenuItem>
 
           <DropdownMenuItem
-            className="text-[15px] font-medium hover:cursor-pointer"
+            className={`text-[15px] font-medium hover:cursor-pointer ${theme === "system" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
             onClick={() => handleSelectTheme("system")}
           >
             <Laptop className="mr-2 h-4 w-4" />
             <span>Hệ thống</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+
+      <DropdownMenu open={openLanguageMenu} onOpenChange={setOpenLanguageMenu}>
+        {/* Trigger ảo, không hiển thị */}
+        <DropdownMenuTrigger />
+        <DropdownMenuContent
+          align="end"
+          className="bg-popover border-border relative -right-6 bottom-10 w-56 origin-bottom-left rounded-xl p-2"
+        >
+          <div className="relative mb-6 flex h-8 items-center justify-center">
+            <button
+              onClick={hanldeOpenUserMenu}
+              type="button"
+              className="absolute top-0 bottom-0 left-0 flex w-10 cursor-pointer items-center justify-center transition-colors duration-200"
+            >
+              <MoveLeft className="h-5 w-5" />
+            </button>
+
+            <span className="text-foreground/90 text-md flex-1 text-center font-medium">
+              Ngôn ngữ
+            </span>
+          </div>
+          <DropdownMenuItem
+            className={`text-[15px] font-medium hover:cursor-pointer`}
+          >
+            <span>VietNamese</span>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            className={`my-2 text-[15px] font-medium hover:cursor-pointer`}
+          >
+            <span>English</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

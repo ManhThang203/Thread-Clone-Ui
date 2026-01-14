@@ -34,7 +34,7 @@ function DesktopSidebar() {
                 return (
                   <Icon
                     className={`size-7 ${
-                      isActive ? "text-black" : "text-gray-400"
+                      isActive ? "text-accent-foreground" : "text-ring"
                     }`}
                   />
                 );

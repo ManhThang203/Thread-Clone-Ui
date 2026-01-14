@@ -1,0 +1,14 @@
+{
+  "required": "{{field}} là bắt buộc",
+  "minLength": "{{field}} phải có ít nhất {{min}} ký tự",
+  "maxLength": "{{field}} phải có ít hơn {{max}} ký tự",
+  "email": "Địa chỉ email không hợp lệ",
+  "password": {
+    "weak": "Mật khẩu quá yếu",
+    "mismatch": "Mật khẩu không khớp"
+  },
+  "username": {
+    "invalid": "Tên đăng nhập chỉ có thể chứa chữ cái, số và dấu gạch dưới",
+    "taken": "Tên đăng nhập này đã được sử dụng"
+  }
+}

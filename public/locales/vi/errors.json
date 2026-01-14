@@ -1,0 +1,20 @@
+{
+  "network": {
+    "timeout": "Hết thời gian chờ. Vui lòng thử lại.",
+    "offline": "Bạn đang ngoại tuyến. Vui lòng kiểm tra kết nối.",
+    "serverError": "Lỗi máy chủ. Vui lòng thử lại sau."
+  },
+  "auth": {
+    "invalidCredentials": "Email hoặc mật khẩu không hợp lệ",
+    "sessionExpired": "Phiên của bạn đã hết hạn. Vui lòng đăng nhập lại.",
+    "unauthorized": "Bạn không có quyền thực hiện hành động này"
+  },
+  "validation": {
+    "invalidFormat": "Định dạng không hợp lệ",
+    "fieldRequired": "Trường này là bắt buộc"
+  },
+  "general": {
+    "somethingWrong": "Đã xảy ra lỗi",
+    "tryAgain": "Vui lòng thử lại"
+  }
+}

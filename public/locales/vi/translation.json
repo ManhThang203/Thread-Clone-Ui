@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "search": "Tìm kiếm",
+    "activity": "Hoạt động",
+    "profile": "Hồ sơ"
+  },
+  "whatNew": {
+    "placeholder": "Có gì mới",
+    "post": "Đăng"
+  },
+  "post": {
+    "create": "Tạo bài viết",
+    "edit": "Chỉnh sửa bài viết",
+    "delete": "Xóa bài viết",
+    "deleteConfirm": "Bạn có chắc muốn xóa bài viết này?",
+    "placeholder": "Bạn đang nghĩ gì?"
+  },
+  "auth": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "logout": "Đăng xuất",
+    "forgotPassword": "Quên mật khẩu?",
+    "resetPassword": "Đặt lại mật khẩu"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "language": "Ngôn ngữ",
+    "back": "Quay lại"
+  },
+  "welcome": {
+    "title": "Chào mừng",
+    "description": "Bắt đầu xây dựng dự án tuyệt vời của bạn!"
+  },
+  "abc": "1223"
+}

@@ -33,7 +33,7 @@ function MobileNav() {
                     return (
                       <Icon
                         className={`size-6 ${
-                          isActive ? "text-accent-foreground" : " text-ring"
+                          isActive ? "text-accent-foreground" : "text-ring"
                         }`}
                       />
                     );

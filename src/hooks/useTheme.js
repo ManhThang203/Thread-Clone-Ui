@@ -21,4 +21,5 @@ export const useTheme = () => {
       root.classList.add(isDark ? "dark" : "light");
     }
   }, [theme]);
+  return theme;
 };

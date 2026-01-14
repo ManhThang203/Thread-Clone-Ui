@@ -13,6 +13,9 @@ import Toaster from "@/components/Toaster";
 // Store
 import { store } from "./store/store.js";
 
+// i18n
+import "./i18n.js";
+
 // Css
 import "./index.css";
 
