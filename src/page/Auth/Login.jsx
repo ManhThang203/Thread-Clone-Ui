@@ -1,9 +1,10 @@
+// Layout
+import HeaderLogin from "@/layout/components/HeaderLogin";
+import FooterLogin from "@/layout/components/FooterLogin";
 // Components
-import FormLogin from "@/components/FormLogin";
-import HeaderLogin from "@/components/HeaderLogin";
-import FooterLogin from "@/components/FooterLogin";
+import FormLogin from "@/components/auth/components/FormLogin";
 import QRCode from "@/components/QRCode";
-import HeaderLoginMobile from "@/components/HeaderLoginMobile";
+import HeaderLoginMobile from "@/layout/components/HeaderLoginMobile";
 
 // Hooks
 import { useLoginForm } from "@/hooks";

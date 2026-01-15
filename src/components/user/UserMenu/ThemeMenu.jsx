@@ -1,7 +1,16 @@
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { Sun, Moon, Laptop, MoveLeft } from "lucide-react";
+
 function ThemeMenu({
   openThemeMenu,
   setOpenThemeMenu,
-  hanldeOpenUserMenu,
+  handleOpenUserMenu,
   theme,
   handleSelectTheme,
 }) {
@@ -15,7 +24,10 @@ function ThemeMenu({
       >
         <div className="relative mb-6 flex h-8 items-center justify-center">
           <button
-            onClick={hanldeOpenUserMenu}
+            onClick={() => {
+              setOpenThemeMenu(false);
+              handleOpenUserMenu();
+            }}
             type="button"
             className="absolute top-0 bottom-0 left-0 flex w-10 cursor-pointer items-center justify-center transition-colors duration-200"
           >

@@ -1,4 +1,4 @@
-import AppRouter from "./AppRoutes";
+import AppRouter from "@/components/AppRoutes";
 
 function App() {
   return <AppRouter />;

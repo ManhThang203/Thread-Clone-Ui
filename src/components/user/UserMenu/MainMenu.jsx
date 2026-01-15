@@ -1,3 +1,14 @@
+// Components
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { ChevronRight } from "lucide-react";
+
 function MainMenu({
   openUserMenu,
   setOpenUserMenu,

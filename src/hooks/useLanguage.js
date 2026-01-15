@@ -20,15 +20,9 @@ export const useLanguage = () => {
     { code: "vi", name: "Tiếng Việt", flag: "🇻🇳" },
   ];
 
-  const getCurrentLanguageName = () => {
-    const lang = availableLanguages.find((l) => l.code === currentLanguage);
-    return lang?.nativeName || "English";
-  };
-
   return {
     currentLanguage,
     changeLanguage,
-    getCurrentLanguageName,
     availableLanguages,
   };
 };

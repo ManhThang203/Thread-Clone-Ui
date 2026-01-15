@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import ChangeLanguage from "@/components/ChangeLanguage";
+import ChangeLanguage from "@/components/user/ChangeLanguage";
 function User() {
   const { t } = useTranslation("translation");
 

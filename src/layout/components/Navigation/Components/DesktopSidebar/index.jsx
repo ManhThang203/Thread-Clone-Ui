@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 // Components
 import { Button } from "@/components/ui/button";
 import { ThreadsLogo } from "@/components/icons/ThreadsLogo";
-import GuestMenu from "@/components/GuestMenu";
+import GuestMenu from "@/components/user/GuestMenu";
 
 import { navItems } from "@/layout/components/Navigation/Components/navItems";
 
 // Icons
 import { Menu } from "lucide-react";
-import UserMenu from "@/components/UserMenu";
+import UserMenu from "@/components/user/UserMenu";
 import { useCurrentUser } from "@/features/auth";
 
 function DesktopSidebar() {

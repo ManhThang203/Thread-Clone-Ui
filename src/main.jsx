@@ -7,8 +7,8 @@ import App from "./App.jsx";
 import { Provider as ReduxProvider } from "react-redux";
 
 // Components
-import ErrorBoundary from "@/components/ErrorBoundary";
-import Toaster from "@/components/Toaster";
+import ErrorBoundary from "@/components/feedback/ErrorBoundary/index.jsx";
+import Toaster from "@/components/feedback/Toaster/index.jsx";
 
 // Store
 import { store } from "./store/store.js";
@@ -19,7 +19,7 @@ import "./i18n.js";
 // Css
 import "./index.css";
 
-import { Loading } from "@/components/Loading";
+import { Loading } from "@/components/feedback/Loading/index.jsx";
 createRoot(document.getElementById("root")).render(
   <ErrorBoundary>
     <ReduxProvider store={store}>

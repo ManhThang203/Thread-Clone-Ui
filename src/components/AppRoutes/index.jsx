@@ -3,8 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 
 import { lazy } from "react";
 import DefaultLayout from "@/layout/DefaultLayout";
-
-import AuthProvider from "@/components/AuthProvider";
+import AuthProvider from "@/components/providers/AuthProvider";
 
 const Activity = lazy(() => import("@/page/Activity"));
 const Search = lazy(() => import("@/page/Search"));

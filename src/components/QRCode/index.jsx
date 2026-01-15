@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import QRCodeSVG from "@/components/icons/QRCodeSVG";
 import { useState } from "react";
-import DialogLayout from "@/components/DialogLayout";
+import DialogLayout from "@/layout/components/DialogLayout";
 
 const QRCode = () => {
   const [isOpen, setIsOpen] = useState(false);
