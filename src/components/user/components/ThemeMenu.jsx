@@ -10,9 +10,10 @@ import { Sun, Moon, Laptop, MoveLeft } from "lucide-react";
 function ThemeMenu({
   openThemeMenu,
   setOpenThemeMenu,
-  handleOpenUserMenu,
+  hanldeOpenUserMenu,
   theme,
   handleSelectTheme,
+  left,
 }) {
   return (
     <DropdownMenu open={openThemeMenu} onOpenChange={setOpenThemeMenu}>
@@ -20,13 +21,15 @@ function ThemeMenu({
       <DropdownMenuTrigger />
       <DropdownMenuContent
         align="end"
-        className="bg-popover border-border relative -right-6 bottom-10 w-56 origin-bottom-left rounded-xl p-2"
+        className={`bg-popover border-border ${left ? "relative top-5 -left-17" : "relative -right-6 bottom-10"} w-56 origin-top-left rounded-xl p-2`}
+        // Thêm onCloseAutoFocus để ngăn focus quay lại trigger
+        onCloseAutoFocus={(e) => e.preventDefault()}
       >
         <div className="relative mb-6 flex h-8 items-center justify-center">
           <button
             onClick={() => {
+              hanldeOpenUserMenu();
               setOpenThemeMenu(false);
-              handleOpenUserMenu();
             }}
             type="button"
             className="absolute top-0 bottom-0 left-0 flex w-10 cursor-pointer items-center justify-center transition-colors duration-200"
@@ -40,7 +43,10 @@ function ThemeMenu({
         </div>
         <DropdownMenuItem
           className={`text-[15px] font-medium hover:cursor-pointer ${theme === "light" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
-          onClick={() => handleSelectTheme("light")}
+          onClick={(e) => {
+            e.preventDefault();
+            handleSelectTheme("light");
+          }}
         >
           <Sun className="mr-2 h-4 w-4" />
           <span>Sáng</span>
@@ -48,7 +54,10 @@ function ThemeMenu({
 
         <DropdownMenuItem
           className={`my-2 text-[15px] font-medium hover:cursor-pointer ${theme === "dark" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
-          onClick={() => handleSelectTheme("dark")}
+          onClick={(e) => {
+            e.preventDefault();
+            handleSelectTheme("dark");
+          }}
         >
           <Moon className="mr-2 h-4 w-4" />
           <span>Tối</span>
@@ -56,7 +65,10 @@ function ThemeMenu({
 
         <DropdownMenuItem
           className={`text-[15px] font-medium hover:cursor-pointer ${theme === "system" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
-          onClick={() => handleSelectTheme("system")}
+          onClick={(e) => {
+            e.preventDefault();
+            handleSelectTheme("system");
+          }}
         >
           <Laptop className="mr-2 h-4 w-4" />
           <span>Hệ thống</span>

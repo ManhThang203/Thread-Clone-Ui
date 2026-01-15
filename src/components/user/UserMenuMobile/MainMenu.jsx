@@ -23,7 +23,7 @@ function MainMenu({
       <DropdownMenuContent
         align="end"
         /* bg-popover và text-popover-foreground sẽ tự lấy màu từ file CSS của bạn */
-        className="border-border bg-popover text-popover-foreground relative -right-6 bottom-0 w-56 origin-top-left rounded-xl border p-2 shadow-lg"
+        className="border-border bg-popover text-popover-foreground relative top-2 left-5 w-56 origin-top-left rounded-xl border p-2 shadow-lg"
       >
         <DropdownMenuItem
           onClick={handleOpenTheme}

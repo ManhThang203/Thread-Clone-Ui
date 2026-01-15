@@ -1,15 +1,10 @@
 import { useTranslation } from "react-i18next";
 
-import ChangeLanguage from "@/components/user/ChangeLanguage";
 function User() {
   const { t } = useTranslation("translation");
 
   return (
     <div className="bg-background flex min-h-screen flex-col items-center justify-center">
-      <div className="absolute top-6 right-6">
-        <ChangeLanguage />
-      </div>
-
       <div className="text-center">
         <h1 className="text-foreground mb-4 text-4xl font-bold">
           {t("translation:welcome.title")}

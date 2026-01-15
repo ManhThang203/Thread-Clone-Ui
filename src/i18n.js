@@ -9,7 +9,9 @@ i18n
   .use(initReactI18next) // Pass i18n to react-i18next
   .init({
     fallbackLng: "en",
-    debug: import.meta.env.DEV,
+
+    // Bật khi debug trên DEV
+    // debug: import.meta.env.DEV,
 
     // Namespace configuration
     ns: ["translation", "common", "errors", "validation"],

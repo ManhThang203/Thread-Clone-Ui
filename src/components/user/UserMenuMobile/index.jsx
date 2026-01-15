@@ -1,10 +1,10 @@
 import LanguageMenu from "@/components/user/components/LanguageMenu";
 import ThemeMenu from "@/components/user/components/ThemeMenu";
-
-import { useUserMenu } from "@/hooks";
 import MainMenu from "./MainMenu";
 
-function UserMenu({ children }) {
+import { useUserMenu } from "@/hooks";
+
+function UserMenuMobile({ children }) {
   const {
     openUserMenu,
     setOpenUserMenu,
@@ -16,8 +16,8 @@ function UserMenu({ children }) {
     setOpenThemeMenu,
     handleSelectTheme,
     handleOpenUserMenu,
-    setOpenLanguageMenu,
     openLanguageMenu,
+    setOpenLanguageMenu,
   } = useUserMenu();
 
   return (
@@ -45,12 +45,11 @@ function UserMenu({ children }) {
       {/* Menu chọn ngôn ngữ */}
       <LanguageMenu
         openLanguageMenu={openLanguageMenu}
-        handleOpenLanguage={handleOpenLanguage}
-        hanldeOpenUserMenu={handleOpenUserMenu}
         setOpenLanguageMenu={setOpenLanguageMenu}
+        hanldeOpenUserMenu={handleOpenUserMenu}
       />
     </>
   );
 }
 
-export default UserMenu;
+export default UserMenuMobile;

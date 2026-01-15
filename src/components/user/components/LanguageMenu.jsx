@@ -14,8 +14,8 @@ function LanguageMenu({
   setOpenLanguageMenu,
   hanldeOpenUserMenu,
 }) {
-  const { t } = useTranslation();
-
+  const { t, i18n } = useTranslation();
+  console.log(i18n.language);
   const { currentLanguage, changeLanguage, availableLanguages } = useLanguage();
   return (
     <DropdownMenu open={openLanguageMenu} onOpenChange={setOpenLanguageMenu}>
@@ -45,7 +45,8 @@ function LanguageMenu({
           <DropdownMenuItem
             key={lang.code}
             className={`my-2 text-[15px] font-medium hover:cursor-pointer ${currentLanguage === lang.code ? "bg-accent" : ""}`}
-            onSelect={() => {
+            onSelect={(e) => {
+              e.preventDefault();
               changeLanguage(lang.code);
             }}
           >

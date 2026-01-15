@@ -1,35 +1,52 @@
-// Components
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-// Icon
-import { ChevronRight } from "lucide-react";
+import { useUserMenu } from "@/hooks";
+import MainMenu from "./MainMenu";
+import LanguageMenu from "@/components/user/components/LanguageMenu";
+import ThemeMenu from "@/components/user/components/ThemeMenu";
 
 function GuestMenu({ children }) {
+  const {
+    openUserMenu,
+    openLanguageMenu,
+    theme,
+    openThemeMenu,
+    setOpenUserMenu,
+    handleOpenTheme,
+    handleOpenLanguage,
+    handleLogout,
+    setOpenThemeMenu,
+    handleSelectTheme,
+    handleOpenUserMenu,
+    setOpenLanguageMenu,
+  } = useUserMenu();
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="bg-popover border-border relative -right-6 bottom-0 w-56 origin-bottom-left rounded-xl p-2"
+    <>
+      <MainMenu
+        openUserMenu={openUserMenu}
+        setOpenUserMenu={setOpenUserMenu}
+        handleOpenTheme={handleOpenTheme}
+        handleOpenLanguage={handleOpenLanguage}
+        handleLogout={handleLogout}
       >
-        <DropdownMenuItem className="flex cursor-pointer items-center justify-between p-3">
-          <div className="flex items-center gap-3">
-            <span className="text-[15px] font-medium">Giao diện</span>
-          </div>
-          <ChevronRight className="text-muted-foreground h-5 w-5" />
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer p-3">
-          <span className="text-[15px] font-medium">Báo cáo sự cố</span>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        {children}
+      </MainMenu>
+
+      {/* Menu chọn theme (light / dark / system ...) */}
+      <ThemeMenu
+        theme={theme}
+        openThemeMenu={openThemeMenu}
+        setOpenThemeMenu={setOpenThemeMenu}
+        handleSelectTheme={handleSelectTheme}
+        hanldeOpenUserMenu={handleOpenUserMenu}
+      />
+
+      {/* Menu chọn ngôn ngữ */}
+      <LanguageMenu
+        openLanguageMenu={openLanguageMenu}
+        handleOpenLanguage={handleOpenLanguage}
+        hanldeOpenUserMenu={handleOpenUserMenu}
+        setOpenLanguageMenu={setOpenLanguageMenu}
+      />
+    </>
   );
 }
 
