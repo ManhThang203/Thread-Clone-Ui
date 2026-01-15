@@ -15,6 +15,7 @@ import InstagramIcon from "@/components/icons/InstagramIcon";
 
 import PropTypes from "prop-types";
 import { Spinner } from "@/components/ui/spinner";
+import { useTranslation } from "react-i18next";
 
 function FormLogin({
   handleSubmit,
@@ -29,6 +30,7 @@ function FormLogin({
   passwordInputRef,
   isSubmitting,
 }) {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -36,8 +38,8 @@ function FormLogin({
       transition={{ duration: 0.5, delay: 0.2 }}
       className="fixed top-1/2 left-1/2 z-50 flex w-[400px] -translate-x-1/2 -translate-y-1/2 flex-col pb-12 sm:mt-0 md:mt-20"
     >
-      <h1 className="mb-6 text-center text-lg font-medium text-white">
-        Đăng nhập bằng tài khoản Instagram
+      <h1 className="text-foreground mb-6 text-center text-lg font-medium">
+        {t("auth.titleLogin")}
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-3">
@@ -53,14 +55,13 @@ function FormLogin({
             className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
           />
           {errors.login && (
-            <p className="mt-1 text-sm text-red-600">{errors.login?.message}</p>
+            <p className="text-chart-5 mt-1 text-sm">{errors.login?.message}</p>
           )}
         </div>
 
         {/* Password */}
         <div>
           <div className="relative">
-            {/* SỬA TỪ <Inpu> THÀNH <Input> */}
             <Input
               ref={passwordInputRef}
               type={showPassword ? "text" : "password"}
@@ -72,7 +73,7 @@ function FormLogin({
             />
             <Button
               type="button"
-              variant="ghost" // đẹp hơn, không có background khi hover
+              variant="ghost"
               size="icon"
               onClick={() => setShowPassword(!showPassword)}
               className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
@@ -81,7 +82,7 @@ function FormLogin({
             </Button>
           </div>
           {errors.password && (
-            <p className="mt-1 text-sm text-red-600">
+            <p className="text-chart-5 mt-1 text-sm">
               {errors.password.message}
             </p>
           )}
@@ -98,7 +99,7 @@ function FormLogin({
               : "bg-primary hover:bg-primary cursor-not-allowed text-black/40"
           } `}
         >
-          {isSubmitting ? <Spinner className="size-8" /> : "Đăng nhập"}
+          {isSubmitting ? <Spinner className="size-8" /> : `${t("auth.login")}`}
         </Button>
       </form>
 
@@ -108,14 +109,16 @@ function FormLogin({
           to="/forgot-password"
           className="text-muted-foreground hover:text-foreground text-sm transition-colors"
         >
-          Quên mật khẩu?
+          {t("auth.forgotPassword")}
         </Link>
       </div>
 
       {/* Divider */}
       <div className="my-6 flex items-center">
         <div className="bg-border h-px flex-1" />
-        <span className="text-muted-foreground px-4 text-sm">hoặc</span>
+        <span className="text-muted-foreground px-4 text-sm">
+          {t("auth.title")}
+        </span>
         <div className="bg-border h-px flex-1" />
       </div>
 
@@ -129,7 +132,7 @@ function FormLogin({
           <InstagramIcon />
 
           <div className="text-left">
-            <div className="font-medium">Tiếp tục bằng Instagram</div>
+            <div className="font-medium"> {t("auth.ContinueInstagram")} </div>
             <div className="text-sm">@email</div>
           </div>
         </div>

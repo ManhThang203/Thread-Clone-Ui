@@ -1,11 +1,14 @@
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router";
 
 const FooterLogin = () => {
+  const { t } = useTranslation();
   const links = [
-    "Điều khoản của Threads",
-    "Chính sách quyền riêng tư",
-    "Chính sách cookie",
-    "Báo cáo sự cố",
+    `${t("authority.threadsTermsOfService")}`,
+    `${t("authority.privacyPolicy")}`,
+    `${t("authority.cookiePolicy")}`,
+    `${t("authority.cookiePolicy")}`,
+    `${t("authority.reportIssue")}`,
   ];
 
   return (

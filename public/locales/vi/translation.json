@@ -17,6 +17,9 @@
     "placeholder": "Bạn đang nghĩ gì?"
   },
   "auth": {
+    "title": "hoặc",
+    "titleLogin": "Đăng nhập bằng tài khoản Instagram",
+    "ContinueInstagram": "Tiếp tục bằng Instagram",
     "login": "Đăng nhập",
     "register": "Đăng ký",
     "logout": "Đăng xuất",
@@ -26,11 +29,25 @@
   "settings": {
     "title": "Cài đặt",
     "language": "Ngôn ngữ",
-    "back": "Quay lại"
+    "back": "Quay lại",
+    " ": "Giao diện",
+    "profile": "Thông tin chi tiết",
+    "settings": "Cài đặt",
+    "feedPreferences": "Bảng feed",
+    "saved": "Đã lưu",
+    "liked": "Đã thích",
+    "support": "Báo cáo hỗ trợ",
+    "logout": "Đăng xuất"
+  },
+  "authority": {
+    "threadsTermsOfService": "Điều khoản dịch vụ",
+    "privacyPolicy": "Chính sách quyền riêng tư",
+    "cookiePolicy": "Chính sách cookie",
+    "reportAproblem": "Báo cáo sự cố",
+    "reportIssue": "Báo cáo sự cố"
   },
   "welcome": {
     "title": "Chào mừng",
     "description": "Bắt đầu xây dựng dự án tuyệt vời của bạn!"
-  },
-  "abc": "1223"
+  }
 }

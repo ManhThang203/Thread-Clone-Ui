@@ -17,6 +17,9 @@
     "placeholder": "What's on your mind?"
   },
   "auth": {
+    "title": "or",
+    "titleLogin": "Log in with your Instagram account",
+    "ContinueInstagram": "Continue using Instagram",
     "login": "Log in",
     "register": "Sign up",
     "logout": "Log out",
@@ -26,11 +29,25 @@
   "settings": {
     "title": "Settings",
     "language": "Language",
-    "back": "Back"
+    "back": "Back",
+    "theme": "Theme",
+    "profile": "Profile",
+    "settings": "Settings",
+    "feedPreferences": "Feed",
+    "saved": "Saved",
+    "liked": "Liked",
+    "support": "Support",
+    "logout": "Log out"
+  },
+  "authority": {
+    "threadsTermsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookies Policy",
+    "reportAproblem": "Report a Problem",
+    "reportIssue": "Report an Issue"
   },
   "welcome": {
     "title": "Welcome",
     "description": "Start building your amazing project here!"
-  },
-  "abc": "1223"
+  }
 }

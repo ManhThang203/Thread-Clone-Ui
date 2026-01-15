@@ -23,7 +23,7 @@ function LanguageMenu({
       <DropdownMenuTrigger />
       <DropdownMenuContent
         align="end"
-        className="bg-popover border-border relative -right-6 bottom-10 w-56 origin-bottom-left rounded-xl p-2"
+        className="bg-popover border-border relative -right-6 bottom-10 w-56 origin-bottom-left rounded-xl p-2 sm:-right-6 sm:bottom-10"
       >
         <div className="relative mb-6 flex h-8 items-center justify-center">
           <button
@@ -33,7 +33,7 @@ function LanguageMenu({
             type="button"
             className="absolute top-0 bottom-0 left-0 flex w-10 cursor-pointer items-center justify-center transition-colors duration-200"
           >
-            <MoveLeft className="h-5 w-5" />
+            <MoveLeft className="text-foreground h-5 w-5" />
           </button>
 
           <span className="text-foreground/90 text-md flex-1 text-center font-medium">
@@ -44,7 +44,7 @@ function LanguageMenu({
         {availableLanguages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            className={`my-2 text-[15px] font-medium hover:cursor-pointer ${currentLanguage === lang.code ? "bg-accent" : ""}`}
+            className={`text-foreground my-2 text-[15px] font-medium hover:cursor-pointer ${currentLanguage === lang.code ? "bg-accent" : ""}`}
             onSelect={(e) => {
               e.preventDefault();
               changeLanguage(lang.code);

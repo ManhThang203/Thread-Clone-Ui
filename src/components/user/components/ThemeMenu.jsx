@@ -34,7 +34,7 @@ function ThemeMenu({
             type="button"
             className="absolute top-0 bottom-0 left-0 flex w-10 cursor-pointer items-center justify-center transition-colors duration-200"
           >
-            <MoveLeft className="h-5 w-5" />
+            <MoveLeft className="text-foreground h-5 w-5" />
           </button>
 
           <span className="text-foreground/90 text-md flex-1 text-center font-medium">
@@ -42,7 +42,7 @@ function ThemeMenu({
           </span>
         </div>
         <DropdownMenuItem
-          className={`text-[15px] font-medium hover:cursor-pointer ${theme === "light" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
+          className={`text-foreground text-[15px] font-medium hover:cursor-pointer ${theme === "light" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
           onClick={(e) => {
             e.preventDefault();
             handleSelectTheme("light");
@@ -53,7 +53,7 @@ function ThemeMenu({
         </DropdownMenuItem>
 
         <DropdownMenuItem
-          className={`my-2 text-[15px] font-medium hover:cursor-pointer ${theme === "dark" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
+          className={`text-foreground my-2 text-[15px] font-medium hover:cursor-pointer ${theme === "dark" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
           onClick={(e) => {
             e.preventDefault();
             handleSelectTheme("dark");
@@ -64,7 +64,7 @@ function ThemeMenu({
         </DropdownMenuItem>
 
         <DropdownMenuItem
-          className={`text-[15px] font-medium hover:cursor-pointer ${theme === "system" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
+          className={`text-foreground text-[15px] font-medium hover:cursor-pointer ${theme === "system" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
           onClick={(e) => {
             e.preventDefault();
             handleSelectTheme("system");

@@ -19,12 +19,15 @@ import "./i18n.js";
 // Css
 import "./index.css";
 
-import { Loading } from "@/components/feedback/Loading/index.jsx";
+import { Loading } from "@/components/feedback/Loading";
+import ThemeProvider from "@/components/providers/ThemeProvider";
+
 createRoot(document.getElementById("root")).render(
   <ErrorBoundary>
     <ReduxProvider store={store}>
       {/* Lazy Loading */}
       <Suspense fallback={<Loading />}>
+        <ThemeProvider />
         <App />
       </Suspense>
       <Toaster

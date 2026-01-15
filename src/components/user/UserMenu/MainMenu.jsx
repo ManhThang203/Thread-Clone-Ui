@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { ChevronRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 function MainMenu({
   openUserMenu,
@@ -17,6 +18,7 @@ function MainMenu({
   handleOpenLanguage,
   handleLogout,
 }) {
+  const { t } = useTranslation();
   return (
     <DropdownMenu open={openUserMenu} onOpenChange={setOpenUserMenu}>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
@@ -29,32 +31,38 @@ function MainMenu({
           onClick={handleOpenTheme}
           className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none"
         >
-          <span className="text-[15px] font-medium">Giao diện</span>
+          <span className="text-[15px] font-medium">{t("settings.theme")}</span>
           <ChevronRight className="text-muted-foreground h-5 w-5" />
         </DropdownMenuItem>
 
         <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer rounded-lg p-3.5 outline-none">
-          <span className="text-[15px] font-medium">Thông tin chi tiết</span>
+          <span className="text-[15px] font-medium">
+            {t("settings.profile")}
+          </span>
         </DropdownMenuItem>
 
         <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground cursor-pointer rounded-lg p-3.5 outline-none">
-          <span className="text-[15px] font-medium">Cài đặt</span>
+          <span className="text-[15px] font-medium">
+            {t("settings.settings")}
+          </span>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator className="bg-border my-1" />
 
         <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none">
-          <span className="text-[15px] font-medium">Bảng feed</span>
+          <span className="text-[15px] font-medium">
+            {t("settings.feedPreferences")}
+          </span>
 
           <ChevronRight className="text-muted-foreground h-5 w-5" />
         </DropdownMenuItem>
 
         <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none">
-          <span className="text-[15px] font-medium">Đã lưu</span>
+          <span className="text-[15px] font-medium">{t("settings.saved")}</span>
         </DropdownMenuItem>
 
         <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none">
-          <span className="text-[15px] font-medium">Đã thích</span>
+          <span className="text-[15px] font-medium">{t("settings.liked")}</span>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator className="bg-border my-1" />
@@ -63,12 +71,16 @@ function MainMenu({
           onClick={handleOpenLanguage}
           className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none"
         >
-          <span className="text-[15px] font-medium">Ngôn ngữ</span>
+          <span className="text-[15px] font-medium">
+            {t("settings.language")}
+          </span>
           <ChevronRight className="text-muted-foreground h-5 w-5" />
         </DropdownMenuItem>
 
         <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none">
-          <span className="text-[15px] font-medium">Báo cáo hỗ trợ</span>
+          <span className="text-[15px] font-medium">
+            {t("settings.support")}
+          </span>
         </DropdownMenuItem>
 
         <DropdownMenuItem
@@ -77,7 +89,7 @@ function MainMenu({
           className="hover:bg-destructive/10 hover:text-destructive flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none"
         >
           <span className="text-destructive text-[15px] font-medium">
-            Đăng xuất
+            {t("settings.logout")}
           </span>
         </DropdownMenuItem>
       </DropdownMenuContent>

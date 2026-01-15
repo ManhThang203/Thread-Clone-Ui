@@ -28,7 +28,9 @@ function MainMenu({
           onClick={handleOpenTheme}
           className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none"
         >
-          <span className="text-[15px] font-medium">Giao diện</span>
+          <span className="text-foreground text-[15px] font-medium">
+            Giao diện
+          </span>
           <ChevronRight className="text-muted-foreground h-5 w-5" />
         </DropdownMenuItem>
 
@@ -36,12 +38,16 @@ function MainMenu({
           onClick={handleOpenLanguage}
           className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none"
         >
-          <span className="text-[15px] font-medium">Ngôn ngữ</span>
+          <span className="text-foreground text-[15px] font-medium">
+            Ngôn ngữ
+          </span>
           <ChevronRight className="text-muted-foreground h-5 w-5" />
         </DropdownMenuItem>
 
         <DropdownMenuItem className="hover:bg-accent hover:text-accent-foreground flex cursor-pointer items-center justify-between rounded-lg p-3.5 outline-none">
-          <span className="text-[15px] font-medium">Báo cáo hỗ trợ</span>
+          <span className="text-foreground text-[15px] font-medium">
+            Báo cáo hỗ trợ
+          </span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
