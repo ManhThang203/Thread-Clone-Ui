@@ -1,10 +1,10 @@
 // Layout
-import HeaderLogin from "@/layout/components/HeaderLogin";
-import FooterLogin from "@/layout/components/FooterLogin";
+import HeaderAuth from "@/layout/components/HeaderAuth";
+import FooterAuth from "@/layout/components/FooterAuth";
 // Components
 import FormLogin from "@/components/auth/components/FormLogin";
 import QRCode from "@/components/QRCode";
-import HeaderLoginMobile from "@/layout/components/HeaderLoginMobile";
+import HeaderAuthMobile from "@/layout/components/HeaderAuthMobile";
 
 // Hooks
 import { useLoginForm } from "@/hooks";
@@ -25,8 +25,8 @@ const LoginForm = () => {
   } = useLoginForm();
   return (
     <>
-      <HeaderLogin />
-      <HeaderLoginMobile />
+      <HeaderAuth />
+      <HeaderAuthMobile />
       <FormLogin
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
@@ -42,7 +42,7 @@ const LoginForm = () => {
       />
 
       <QRCode />
-      <FooterLogin />
+      <FooterAuth />
     </>
   );
 };

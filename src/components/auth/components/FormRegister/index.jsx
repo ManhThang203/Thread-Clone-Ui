@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 // Icons
-import { ChevronRight, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 // Router
 import { Link } from "react-router-dom";
@@ -43,7 +43,34 @@ function FormLogin({
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-3">
-        {/* Email / Username */}
+        <div>
+          <Input
+            ref={loginInputRef}
+            type="text"
+            placeholder="Tên người dùng, số điện thoại hoặc email"
+            {...register("login", {
+              required: t("username.required"),
+            })}
+            className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
+          />
+          {errors.login && (
+            <p className="text-chart-5 mt-1 text-sm">{errors.login?.message}</p>
+          )}
+        </div>
+        <div>
+          <Input
+            ref={loginInputRef}
+            type="text"
+            placeholder="Tên người dùng, số điện thoại hoặc email"
+            {...register("login", {
+              required: t("username.required"),
+            })}
+            className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
+          />
+          {errors.login && (
+            <p className="text-chart-5 mt-1 text-sm">{errors.login?.message}</p>
+          )}
+        </div>
         <div>
           <Input
             ref={loginInputRef}
@@ -106,38 +133,12 @@ function FormLogin({
       {/* Forgot Password */}
       <div className="mt-6 text-center">
         <Link
-          to="/forgot-password"
+          to="/login"
           className="text-muted-foreground hover:text-foreground text-sm transition-colors"
         >
           {t("auth.forgotPassword")}
         </Link>
       </div>
-
-      {/* Divider */}
-      <div className="my-6 flex items-center">
-        <div className="bg-border h-px flex-1" />
-        <span className="text-muted-foreground px-4 text-sm">
-          {t("auth.title")}
-        </span>
-        <div className="bg-border h-px flex-1" />
-      </div>
-
-      {/* Continue with Instagram */}
-      <motion.button
-        whileHover={{ scale: 1.01 }}
-        whileTap={{ scale: 0.99 }}
-        className="hover:border-foreground flex w-full items-center justify-between rounded-2xl border p-4 transition-all duration-300 hover:cursor-pointer"
-      >
-        <div className="flex items-center gap-4">
-          <InstagramIcon />
-
-          <div className="text-left">
-            <div className="font-medium"> {t("auth.ContinueInstagram")} </div>
-            <div className="text-sm">@email</div>
-          </div>
-        </div>
-        <ChevronRight className="h-5 w-5" />
-      </motion.button>
     </motion.div>
   );
 }
