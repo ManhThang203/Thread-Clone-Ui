@@ -11,6 +11,9 @@ import * as authServices from "@/services/auth";
 import { LOCAL_STORAGE_KEYS } from "@/configs";
 
 import { toast } from "sonner";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "@/utils/validators";
 export const useLoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -31,9 +34,10 @@ export const useLoginForm = () => {
     setFocus,
   } = useForm({
     defaultValues: {
-      login: "thang221-test",
-      password: "Thang2121",
+      login: "",
+      password: "",
     },
+    resolver: yupResolver(loginSchema),
   });
 
   // eslint-disable-next-line react-hooks/incompatible-library

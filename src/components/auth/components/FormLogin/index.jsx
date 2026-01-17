@@ -49,14 +49,9 @@ function FormLogin({
             ref={loginInputRef}
             type="text"
             placeholder="Tên người dùng, số điện thoại hoặc email"
-            {...register("login", {
-              required: t("username.required"),
-            })}
+            {...register("login")} // Bỏ phần validation thủ công
             className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
           />
-          {errors.login && (
-            <p className="text-chart-5 mt-1 text-sm">{errors.login?.message}</p>
-          )}
         </div>
 
         {/* Password */}
@@ -66,9 +61,7 @@ function FormLogin({
               ref={passwordInputRef}
               type={showPassword ? "text" : "password"}
               placeholder="Mật khẩu"
-              {...register("password", {
-                required: t("password.required"),
-              })}
+              {...register("password")} // Bỏ phần validation thủ công
               className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl pr-12"
             />
             <Button
@@ -81,11 +74,6 @@ function FormLogin({
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </Button>
           </div>
-          {errors.password && (
-            <p className="text-chart-5 mt-1 text-sm">
-              {errors.password.message}
-            </p>
-          )}
         </div>
 
         {/* Submit Button */}
