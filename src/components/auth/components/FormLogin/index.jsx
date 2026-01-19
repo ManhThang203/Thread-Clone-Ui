@@ -22,7 +22,6 @@ function FormLogin({
   onSubmit,
   onError,
   register,
-  errors,
   isFormValid,
   showPassword,
   setShowPassword,
@@ -49,7 +48,7 @@ function FormLogin({
             ref={loginInputRef}
             type="text"
             placeholder="Tên người dùng, số điện thoại hoặc email"
-            {...register("login")} // Bỏ phần validation thủ công
+            {...register("login")}
             className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
           />
         </div>
@@ -61,7 +60,7 @@ function FormLogin({
               ref={passwordInputRef}
               type={showPassword ? "text" : "password"}
               placeholder="Mật khẩu"
-              {...register("password")} // Bỏ phần validation thủ công
+              {...register("password")}
               className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl pr-12"
             />
             <Button

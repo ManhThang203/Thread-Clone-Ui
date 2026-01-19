@@ -1,30 +1,31 @@
 {
-  "required": "{{field}} là bắt buộc",
-  "minLength": "{{field}} phải có ít nhất {{min}} ký tự",
-  "maxLength": "{{field}} phải có ít hơn {{max}} ký tự",
-  "email": "Địa chỉ email không hợp lệ",
+  "required": "{{field}} is required",
+  "minLength": "{{field}} must be at least {{min}} characters",
+  "maxLength": "{{field}} must be less than {{max}} characters",
+  "email": "Invalid email address",
   "password": {
-    "weak": "Mật khẩu phải chứa ít nhất 1 chữ cái và 1 số",
-    "mismatch": "Mật khẩu không khớp",
-    "required": "Vui lòng nhập mật khẩu"
+    "weak": "Password must contain at least 1 letter and 1 number",
+    "mismatch": "Passwords do not match",
+    "required": "Please enter password"
   },
   "username": {
-    "invalid": "Vui lòng nhập email, số điện thoại hoặc tên đăng nhập hợp lệ",
-    "taken": "Tên đăng nhập này đã được sử dụng",
-    "required": "Vui lòng nhập tên đăng nhập, email hoặc số điện thoại"
+    "invalid": "Please enter a valid email, phone number or username",
+    "taken": "This username is already taken",
+    "required": "Please enter username, email or phone number"
   },
   "fields": {
-    "password": "Mật khẩu",
-    "username": "Tên đăng nhập",
-    "email": "Email"
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "password_confirmation": "Password confirmation"
   },
   "auth": {
-    "titleLogin": "Đăng nhập",
-    "login": "Đăng nhập",
-    "forgotPassword": "Quên mật khẩu?",
-    "title": "Hoặc",
-    "ContinueInstagram": "Tiếp tục với Instagram",
-    "loginPlaceholder": "Tên người dùng, số điện thoại hoặc email",
-    "passwordPlaceholder": "Mật khẩu"
+    "titleLogin": "Login",
+    "login": "Log in",
+    "forgotPassword": "Forgot password?",
+    "title": "Or",
+    "ContinueInstagram": "Continue with Instagram",
+    "loginPlaceholder": "Username, phone number or email",
+    "passwordPlaceholder": "Password"
   }
 }

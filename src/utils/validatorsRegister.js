@@ -31,12 +31,3 @@ export const registerSchema = object({
     .required("nhập lại mật khẩu là bặt buộc")
     .oneOf([ref("password")], "Nhập lại mất khẩu, Không khớp"),
 });
-
-export const loginSchema = object({
-  login: string()
-    .required("Tên người dùng, email hoặc số điện thoại là bắt buộc")
-    .min(3, "Ít nhất phải 3 ký tự"),
-  password: string()
-    .required("Mật khẩu là bắt buộc")
-    .min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
-});

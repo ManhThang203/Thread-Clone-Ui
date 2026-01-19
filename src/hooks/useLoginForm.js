@@ -13,7 +13,8 @@ import { LOCAL_STORAGE_KEYS } from "@/configs";
 import { toast } from "sonner";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from "@/utils/validators";
+import { loginSchema } from "@/utils";
+
 export const useLoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -66,7 +67,6 @@ export const useLoginForm = () => {
   const onError = (errors) => {
     // Lấy key của field lỗi đầu tiên trong object errors
     const firstError = Object.keys(errors)[0];
-    console.log(errors[firstError]);
 
     // Hiển thị message của lỗi đầu tiên qua toast notification
     toast.error(errors[firstError].message);

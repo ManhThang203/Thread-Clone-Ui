@@ -22,7 +22,6 @@ function FormLogin({
   onSubmit,
   onError,
   register,
-  errors,
   isFormValid,
   showPassword,
   setShowPassword,
@@ -47,55 +46,28 @@ function FormLogin({
           <Input
             ref={loginInputRef}
             type="text"
-            placeholder="Tên người dùng, số điện thoại hoặc email"
-            {...register("login", {
-              required: t("username.required"),
-            })}
+            placeholder={t("fields.username")}
+            {...register("username")}
             className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
           />
-          {errors.login && (
-            <p className="text-chart-5 mt-1 text-sm">{errors.login?.message}</p>
-          )}
         </div>
         <div>
           <Input
             ref={loginInputRef}
             type="text"
-            placeholder="Tên người dùng, số điện thoại hoặc email"
-            {...register("login", {
-              required: t("username.required"),
-            })}
+            placeholder={t("fields.email")}
+            {...register("email")}
             className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
           />
-          {errors.login && (
-            <p className="text-chart-5 mt-1 text-sm">{errors.login?.message}</p>
-          )}
-        </div>
-        <div>
-          <Input
-            ref={loginInputRef}
-            type="text"
-            placeholder="Tên người dùng, số điện thoại hoặc email"
-            {...register("login", {
-              required: t("username.required"),
-            })}
-            className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
-          />
-          {errors.login && (
-            <p className="text-chart-5 mt-1 text-sm">{errors.login?.message}</p>
-          )}
         </div>
 
-        {/* Password */}
         <div>
           <div className="relative">
             <Input
               ref={passwordInputRef}
               type={showPassword ? "text" : "password"}
-              placeholder="Mật khẩu"
-              {...register("password", {
-                required: t("password.required"),
-              })}
+              placeholder={t("fields.password")}
+              {...register("password")}
               className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl pr-12"
             />
             <Button
@@ -108,11 +80,28 @@ function FormLogin({
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </Button>
           </div>
-          {errors.password && (
-            <p className="text-chart-5 mt-1 text-sm">
-              {errors.password.message}
-            </p>
-          )}
+        </div>
+
+        {/* Password */}
+        <div>
+          <div className="relative">
+            <Input
+              ref={passwordInputRef}
+              type={showPassword ? "text" : "password"}
+              placeholder={t("fields.password_confirmation")}
+              {...register("password_confirmation")}
+              className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl pr-12"
+            />
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </Button>
+          </div>
         </div>
 
         {/* Submit Button */}
