@@ -14,9 +14,11 @@ addMethod(string, "login", function (message) {
 
 export const loginSchema = object({
   login: string()
-    .login("Sai định dạng email")
-    .required("Email hoặc tên đăng nhập là bắt buộc"),
+    .matches(EMAIL_REGEX, "login.invalid")
+    .required(JSON.stringify({ key: "required", field: "fields.login" })),
+
   password: string()
-    .required("Mật khẩu là bắt buộc")
-    .matches(PASSWORD_REGEX, "Mật khẩu không đúng định dạng"),
+    .required(JSON.stringify({ key: "required", field: "fields.password" }))
+    // password.mismatch phải có trong file JSON
+    .matches(PASSWORD_REGEX, "password.mismatch"),
 });

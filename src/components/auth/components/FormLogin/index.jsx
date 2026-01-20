@@ -30,6 +30,7 @@ function FormLogin({
   isSubmitting,
 }) {
   const { t } = useTranslation();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -47,7 +48,8 @@ function FormLogin({
           <Input
             ref={loginInputRef}
             type="text"
-            placeholder="Tên người dùng, số điện thoại hoặc email"
+            // Đã thay đổi:
+            placeholder={t("auth.loginPlaceholder")}
             {...register("login")}
             className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl"
           />
@@ -59,7 +61,8 @@ function FormLogin({
             <Input
               ref={passwordInputRef}
               type={showPassword ? "text" : "password"}
-              placeholder="Mật khẩu"
+              // Đã thay đổi:
+              placeholder={t("auth.passwordPlaceholder")}
               {...register("password")}
               className="border-border bg-card text-foreground placeholder:text-muted-foreground focus-visible:ring-primary h-14 rounded-2xl pr-12"
             />
@@ -77,16 +80,16 @@ function FormLogin({
 
         {/* Submit Button */}
         <Button
-          disabled={isSubmitting} // chỉ disable thật khi đang gọi API
+          disabled={isSubmitting}
           type="submit"
           variant={isFormValid ? "default" : "secondary"}
           className={`h-14 w-full rounded-2xl text-base font-medium transition-all duration-300 ${
             isFormValid && !isSubmitting
               ? "bg-primary hover:bg-primary text-primary-foreground cursor-pointer"
-              : "bg-primary hover:bg-primary cursor-not-allowed text-black/40"
+              : "bg-primary hover:bg-primary text-secondary/70 cursor-not-allowed"
           } `}
         >
-          {isSubmitting ? <Spinner className="size-8" /> : `${t("auth.login")}`}
+          {isSubmitting ? <Spinner className="size-8" /> : t("auth.login")}
         </Button>
       </form>
 
@@ -119,8 +122,9 @@ function FormLogin({
           <InstagramIcon />
 
           <div className="text-left">
-            <div className="font-medium"> {t("auth.ContinueInstagram")} </div>
-            <div className="text-sm">@email</div>
+            <div className="font-medium">{t("auth.ContinueInstagram")}</div>
+            {/* Đã thay đổi: */}
+            <div className="text-sm">{t("auth.instagramAccount")}</div>
           </div>
         </div>
         <ChevronRight className="h-5 w-5" />

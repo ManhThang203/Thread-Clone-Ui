@@ -5,19 +5,23 @@
   "email": "Địa chỉ email không hợp lệ",
   "password": {
     "weak": "Mật khẩu phải chứa ít nhất 1 chữ cái và 1 số",
-    "mismatch": "Mật khẩu không khớp",
-    "required": "Vui lòng nhập mật khẩu"
+    "mismatch": "Định dạng mật khẩu không hợp lệ",
+    "required": "Vui lòng nhập mật khẩu của bạn"
   },
   "username": {
-    "invalid": "Vui lòng nhập email, số điện thoại hoặc tên đăng nhập hợp lệ",
-    "taken": "Tên đăng nhập này đã được sử dụng",
-    "required": "Vui lòng nhập tên đăng nhập, email hoặc số điện thoại"
+    "invalid": "Vui lòng nhập email, số điện thoại hoặc tên người dùng hợp lệ",
+    "taken": "Tên người dùng này đã được sử dụng",
+    "required": "Vui lòng nhập tên người dùng, email hoặc số điện thoại của bạn"
+  },
+  "login": {
+    "invalid": "Định dạng email hoặc tên người dùng không hợp lệ"
   },
   "fields": {
-    "username": "Tên đăng nhập",
+    "login": "Tên người dùng và Email",
+    "username": "Tên người dùng",
     "email": "Email",
     "password": "Mật khẩu",
-    "password_confirmation": "xác nhận mật khẩu"
+    "password_confirmation": "Xác nhận mật khẩu"
   },
   "auth": {
     "titleLogin": "Đăng nhập",

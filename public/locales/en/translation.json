@@ -19,12 +19,15 @@
   "auth": {
     "title": "or",
     "titleLogin": "Log in with your Instagram account",
-    "ContinueInstagram": "Continue using Instagram",
+    "ContinueInstagram": "Continue with Instagram",
     "login": "Log in",
     "register": "Sign up",
     "logout": "Log out",
     "forgotPassword": "Forgot password?",
-    "resetPassword": "Reset password"
+    "resetPassword": "Reset password",
+    "loginPlaceholder": "Username, phone number or email",
+    "passwordPlaceholder": "Password",
+    "instagramAccount": "@email"
   },
   "settings": {
     "title": "Settings",

@@ -5,15 +5,19 @@
   "email": "Invalid email address",
   "password": {
     "weak": "Password must contain at least 1 letter and 1 number",
-    "mismatch": "Passwords do not match",
-    "required": "Please enter password"
+    "mismatch": "Invalid password format",
+    "required": "Please enter your password"
   },
   "username": {
-    "invalid": "Please enter a valid email, phone number or username",
+    "invalid": "Please enter a valid email, phone number, or username",
     "taken": "This username is already taken",
-    "required": "Please enter username, email or phone number"
+    "required": "Please enter your username, email, or phone number"
+  },
+  "login": {
+    "invalid": "Invalid email or username format"
   },
   "fields": {
+    "login": "Username and Email",
     "username": "Username",
     "email": "Email",
     "password": "Password",
@@ -25,7 +29,7 @@
     "forgotPassword": "Forgot password?",
     "title": "Or",
     "ContinueInstagram": "Continue with Instagram",
-    "loginPlaceholder": "Username, phone number or email",
+    "loginPlaceholder": "Username, phone number, or email",
     "passwordPlaceholder": "Password"
   }
 }

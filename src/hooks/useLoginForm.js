@@ -14,6 +14,7 @@ import { toast } from "sonner";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "@/utils";
+import { useTranslation } from "react-i18next";
 
 export const useLoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +27,8 @@ export const useLoginForm = () => {
   const loginInputRef = useRef(null);
 
   const passwordInputRef = useRef(null);
+
+  const { t } = useTranslation();
 
   const {
     register,
@@ -62,16 +65,37 @@ export const useLoginForm = () => {
     }
   }, [currentUser, navigate, params]);
 
-  //  Hàm xử lý lỗi validation từ React Hook Form
-  //  Hiển thị thông báo lỗi đầu tiên bằng toast notification
+  // Hàm xử lý lỗi validation từ React Hook Form
   const onError = (errors) => {
-    // Lấy key của field lỗi đầu tiên trong object errors
-    const firstError = Object.keys(errors)[0];
+    // Lấy ra trưởng lỗi đầu tiên
+    const firstErrorKey = Object.keys(errors)[0];
 
-    // Hiển thị message của lỗi đầu tiên qua toast notification
-    toast.error(errors[firstError].message);
+    if (!firstErrorKey) return;
+    // Lấy ra message của trưởng đó
+    const errorValue = errors[firstErrorKey].message;
+    let finalMessage = "";
+
+    try {
+      // Kiểm tra xem message có phải là string JSON (chứa key và field) không
+      if (errorValue.includes("{")) {
+        const parsed = JSON.parse(errorValue);
+
+        // Lấy nhãn field đã dịch: ví dụ "Tên người dùng và Email"
+        const translatedField = t(parsed.field);
+
+        // Dịch câu thông báo: t("required", { field: "Tên người dùng..." })
+        finalMessage = t(parsed.key, { field: translatedField });
+      } else {
+        // Nếu là chuỗi thuần như "login.invalid" hoặc "password.mismatch"
+        finalMessage = t(errorValue);
+      }
+      // eslint-disable-next-line no-unused-vars
+    } catch (e) {
+      finalMessage = t(errorValue);
+    }
+
+    toast.error(finalMessage);
   };
-
   const onSubmit = async (data) => {
     const loginPromise = authServices.login(data);
     toast.promise(loginPromise, {

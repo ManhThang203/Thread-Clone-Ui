@@ -24,7 +24,10 @@
     "register": "Đăng ký",
     "logout": "Đăng xuất",
     "forgotPassword": "Quên mật khẩu?",
-    "resetPassword": "Đặt lại mật khẩu"
+    "resetPassword": "Đặt lại mật khẩu",
+    "loginPlaceholder": "Tên người dùng, số điện thoại hoặc email",
+    "passwordPlaceholder": "Mật khẩu",
+    "instagramAccount": "@email"
   },
   "settings": {
     "title": "Cài đặt",
