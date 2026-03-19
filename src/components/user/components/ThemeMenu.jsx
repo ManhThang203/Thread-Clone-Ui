@@ -1,3 +1,4 @@
+import { useMobileDetection } from "@/hooks";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,19 +14,35 @@ function ThemeMenu({
   hanldeOpenUserMenu,
   theme,
   handleSelectTheme,
-  left,
 }) {
+  const isMobile = useMobileDetection(); // ✨ Dùng custom hook thay vì useState + useEffect
+  console.log(isMobile);
+
   return (
     <DropdownMenu open={openThemeMenu} onOpenChange={setOpenThemeMenu}>
-      {/* Trigger ảo, không hiển thị */}
-      <DropdownMenuTrigger />
+      {/* Trigger ảo */}
+      <DropdownMenuTrigger asChild>
+        <button
+          className="pointer-events-none absolute flex h-10 w-10 items-center justify-center opacity-0"
+          style={
+            isMobile
+              ? { position: "fixed", left: "16px", top: "20px" }
+              : { position: "fixed", left: "30px", top: "calc(100vh - 50px)" }
+          }
+        />
+      </DropdownMenuTrigger>
       <DropdownMenuContent
-        align="end"
-        className={`bg-popover border-border ${left ? "relative top-5 -left-17" : "relative -right-6 bottom-10"} w-56 origin-top-left rounded-xl p-2`}
+        align={isMobile ? "start" : "start"}
+        side={isMobile ? "bottom" : "bottom"}
+        sideOffset={isMobile ? 8 : 8}
+        className={`bg-popover border-border z-[9999] rounded-xl border p-2 shadow-lg ${isMobile
+          ? "w-[calc(100vw-400px)] max-w-sm origin-top-left"
+          : "w-56 origin-top-right"
+          }`}
         // Thêm onCloseAutoFocus để ngăn focus quay lại trigger
         onCloseAutoFocus={(e) => e.preventDefault()}
       >
-        <div className="relative mb-6 flex h-8 items-center justify-center">
+        <div className="border-border relative mb-6 flex h-8 items-center justify-center border-b pb-3">
           <button
             onClick={() => {
               hanldeOpenUserMenu();
@@ -42,7 +59,7 @@ function ThemeMenu({
           </span>
         </div>
         <DropdownMenuItem
-          className={`text-foreground text-[15px] font-medium hover:cursor-pointer ${theme === "light" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
+          className={`text-foreground rounded-lg p-3 text-[15px] font-medium hover:cursor-pointer ${theme === "light" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
           onClick={(e) => {
             e.preventDefault();
             handleSelectTheme("light");
@@ -53,7 +70,7 @@ function ThemeMenu({
         </DropdownMenuItem>
 
         <DropdownMenuItem
-          className={`text-foreground my-2 text-[15px] font-medium hover:cursor-pointer ${theme === "dark" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
+          className={`text-foreground rounded-lg p-3 text-[15px] font-medium hover:cursor-pointer ${theme === "dark" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
           onClick={(e) => {
             e.preventDefault();
             handleSelectTheme("dark");
@@ -64,7 +81,7 @@ function ThemeMenu({
         </DropdownMenuItem>
 
         <DropdownMenuItem
-          className={`text-foreground text-[15px] font-medium hover:cursor-pointer ${theme === "system" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
+          className={`text-foreground rounded-lg p-3 text-[15px] font-medium hover:cursor-pointer ${theme === "system" ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
           onClick={(e) => {
             e.preventDefault();
             handleSelectTheme("system");

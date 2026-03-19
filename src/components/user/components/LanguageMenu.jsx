@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import {
   DropdownMenu,
@@ -5,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useLanguage } from "@/hooks";
+import { useLanguage, useMobileDetection } from "@/hooks";
 
 import { MoveLeft } from "lucide-react";
 
@@ -15,17 +16,36 @@ function LanguageMenu({
   hanldeOpenUserMenu,
 }) {
   const { t, i18n } = useTranslation();
+  const isMobile = useMobileDetection(); // ✨ Dùng custom hook thay vì useState + useEffect
+  const triggerRef = useRef(null);
+
   console.log(i18n.language);
   const { currentLanguage, changeLanguage, availableLanguages } = useLanguage();
   return (
     <DropdownMenu open={openLanguageMenu} onOpenChange={setOpenLanguageMenu}>
-      {/* Trigger ảo, không hiển thị */}
-      <DropdownMenuTrigger />
+      {/* Trigger ảo */}
+      <DropdownMenuTrigger asChild>
+        <button
+          ref={triggerRef}
+          className="pointer-events-none absolute flex h-10 w-10 items-center justify-center opacity-0"
+          style={
+            isMobile
+              ? { position: "fixed", left: "16px", top: "20px" }
+              : { position: "fixed", left: "30px", top: "calc(100vh - 50px)" }
+          }
+        />
+      </DropdownMenuTrigger>
       <DropdownMenuContent
-        align="end"
-        className="bg-popover border-border relative -right-6 bottom-10 w-56 origin-bottom-left rounded-xl p-2 sm:-right-6 sm:bottom-10"
+        align={isMobile ? "start" : "start"}
+        side={isMobile ? "bottom" : "bottom"}
+        sideOffset={isMobile ? 8 : 8}
+        className={`bg-popover border-border z-[9999] rounded-xl border p-2 shadow-lg ${isMobile
+          ? "w-[calc(100vw-400px)] max-w-sm origin-top-left"
+          : "w-56 origin-top-right"
+          }`}
+        onCloseAutoFocus={(e) => e.preventDefault()}
       >
-        <div className="relative mb-6 flex h-8 items-center justify-center">
+        <div className="border-border relative mb-6 flex h-8 items-center justify-center border-b pb-3">
           <button
             onClick={() => {
               hanldeOpenUserMenu();
@@ -44,7 +64,7 @@ function LanguageMenu({
         {availableLanguages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            className={`text-foreground my-2 text-[15px] font-medium hover:cursor-pointer ${currentLanguage === lang.code ? "bg-accent" : ""}`}
+            className={`text-foreground rounded-lg p-3 text-[15px] font-medium hover:cursor-pointer ${currentLanguage === lang.code ? "bg-accent text-accent-foreground" : "hover:bg-accent/50"}`}
             onSelect={(e) => {
               e.preventDefault();
               changeLanguage(lang.code);
